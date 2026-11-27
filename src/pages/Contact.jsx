@@ -213,11 +213,11 @@ export default function Contact() {
                   Preferred Travel Dates
                 </label>
                 <input
-                  type="text"
+                  type="date"
                   name="dates"
                   value={formData.dates}
                   onChange={handleChange}
-                  placeholder="e.g. June 10–20, 2026 or Flexible"
+                  // placeholder="e.g. June 10–20, 2026 or Flexible"
                   className="mt-2 w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-cyan-500 focus:bg-white focus:ring-4 focus:ring-cyan-500/15"
                 />
               </div>

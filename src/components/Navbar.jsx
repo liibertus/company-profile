@@ -12,6 +12,7 @@ export default function Navbar() {
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
+    { name: 'How to Get Here', path: '/how-to-get-here' },
     { name: 'Contact Us', path: '/contact' },
   ];
 
@@ -30,16 +31,8 @@ export default function Navbar() {
           <img
             src={logo}
             alt="Mentawai Surf Journey Logo"
-            className="h-10 w-10 rounded-xl bg-white/10 p-1 object-contain ring-1 ring-white/15 transition group-hover:ring-cyan-400/50"
+            className="h-11"
           />
-          <div className="flex flex-col">
-            <span className="text-base font-extrabold tracking-tight text-white sm:text-lg">
-              Mentawai Surf Journey
-            </span>
-            <span className="text-[11px] font-medium uppercase tracking-widest text-cyan-400">
-              Mentawai Surf Trip
-            </span>
-          </div>
         </Link>
 
         {/* Desktop Navigation */}

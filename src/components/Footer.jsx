@@ -33,16 +33,8 @@ export default function Footer() {
               <img
                 src={logo}
                 alt="Mentawai Surf Journey Logo"
-                className="h-11 w-11 rounded-xl bg-white/10 p-1 object-contain ring-1 ring-white/15"
+                className="h-11"
               />
-              <div>
-                <p className="text-lg font-extrabold text-white">
-                  Mentawai Surf Journey
-                </p>
-                <p className="text-xs font-medium uppercase tracking-widest text-cyan-400">
-                  Eat • Surf • Sleep • Repeat
-                </p>
-              </div>
             </Link>
             <p className="mt-5 max-w-md text-sm leading-relaxed text-slate-400">
               Curated all-inclusive Mentawai surf trips crafted for surfers seeking
@@ -85,6 +77,11 @@ export default function Footer() {
               <li>
                 <Link to="/about" className="text-slate-400 transition hover:text-cyan-400">
                   About Us
+                </Link>
+              </li>
+              <li>
+                <Link to="/how-to-get-here" className="text-slate-400 transition hover:text-cyan-400">
+                  How to Get Here
                 </Link>
               </li>
               <li>
