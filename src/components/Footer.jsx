@@ -36,7 +36,7 @@ export default function Footer() {
           <ul className="mt-4 space-y-2 text-sm text-slate-400">
             <li>Email: info@perusahaananda.com</li>
             <li>Telepon: +62 812-3456-7890</li>
-            <li>Alamat: Jl. Contoh Bisnis No. 10, Indonesia</li>
+            <li>Alamat: Jl. Conctoh Bisnis No. 10, Indonesia</li>
           </ul>
         </div>
       </div>
