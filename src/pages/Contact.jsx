@@ -31,6 +31,8 @@ export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
     dates: '',
+    email: '',
+    phone: '',
     surfers: '1',
     message: '',
   });
@@ -47,6 +49,8 @@ export default function Contact() {
       'Hi Mentawai Surf Journey! I would like to inquire about a surf trip:',
       `• Name: ${formData.name}`,
       `• Preferred Dates: ${formData.dates || 'Flexible'}`,
+      `• Email: ${formData.email}`,
+      `• Phone: ${formData.phone}`,
       `• Group Size: ${formData.surfers} surfer(s)`,
       `• Message: ${formData.message}`,
     ].join('\n');
@@ -55,7 +59,7 @@ export default function Contact() {
     window.open(waUrl, '_blank', 'noopener,noreferrer');
 
     setSubmitted(true);
-    setFormData({ name: '', dates: '', surfers: '1', message: '' });
+    setFormData({ name: '', dates: '', email: '', phone: '', surfers: '1', message: '' });
   };
 
   return (
@@ -208,16 +212,44 @@ export default function Contact() {
                 </div>
               </div>
 
+              {/* email & phone number */}
+              <div className="grid gap-6 sm:grid-cols-2">
+                <div> 
+                  <label className="block text-sm font-semibold text-slate-700">
+                    Email Address 
+                  </label>
+                  <input 
+                    type="email" 
+                    name="email"
+                    required
+                    value={formData.email}
+                    onChange={handleChange}
+                    className='mt-2 w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-cyan-500 focus:bg-white focus:ring-4 focus:ring-cyan-500/15' />
+                </div>
+                <div> 
+                  <label className="block text-sm font-semibold text-slate-700">
+                    Phone Number
+                  </label>
+                  <input 
+                    type="number" 
+                    name="phone"
+                    required
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className='mt-2 w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-cyan-500 focus:bg-white focus:ring-4 focus:ring-cyan-500/15' />
+                </div>
+              </div>
+
               <div>
                 <label className="block text-sm font-semibold text-slate-700">
                   Preferred Travel Dates
                 </label>
                 <input
-                  type="date"
+                  type="text"
                   name="dates"
                   value={formData.dates}
                   onChange={handleChange}
-                  // placeholder="e.g. June 10–20, 2026 or Flexible"
+                  placeholder="e.g. June 10–20, 2026 or Flexible of times"
                   className="mt-2 w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-cyan-500 focus:bg-white focus:ring-4 focus:ring-cyan-500/15"
                 />
               </div>
