@@ -1,10 +1,37 @@
 import { useState } from 'react';
-import { Mail, Phone, MapPin, CheckCircle2 } from 'lucide-react';
+import {
+  CheckCircle2,
+  Clock,
+  MapPin,
+  MessageCircle,
+  Send,
+} from 'lucide-react';
+
+function Instagram({ size = 20 }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+    </svg>
+  );
+}
 
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
-    email: '',
+    dates: '',
+    surfers: '1',
     message: '',
   });
   const [submitted, setSubmitted] = useState(false);
@@ -15,106 +42,189 @@ export default function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Di sini Anda bisa integrasikan dengan API backend, EmailJS, atau redirect WhatsApp
-    console.log('Data pesan:', formData);
+
+    const text = [
+      'Hi Mentawai Surf Journey! I would like to inquire about a surf trip:',
+      `• Name: ${formData.name}`,
+      `• Preferred Dates: ${formData.dates || 'Flexible'}`,
+      `• Group Size: ${formData.surfers} surfer(s)`,
+      `• Message: ${formData.message}`,
+    ].join('\n');
+
+    const waUrl = `https://wa.me/6282315509025?text=${encodeURIComponent(text)}`;
+    window.open(waUrl, '_blank', 'noopener,noreferrer');
+
     setSubmitted(true);
-    setFormData({ name: '', email: '', message: '' });
+    setFormData({ name: '', dates: '', surfers: '1', message: '' });
   };
 
   return (
-    <div className="py-16 sm:py-24">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="max-w-2xl">
-          <p className="text-sm font-semibold uppercase tracking-wider text-blue-600">
-            Contact Us
-          </p>
-          <h1 className="mt-2 text-3xl font-extrabold text-slate-900 sm:text-4xl">
-            Mari Diskusikan Kebutuhan Anda
-          </h1>
-          <p className="mt-4 text-slate-600">
-            Kirimkan pesan melalui formulir di bawah atau hubungi kami secara langsung.
-          </p>
+    <div>
+      {/* Dark Page Header */}
+      <section className="bg-slate-950 py-20 text-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="max-w-2xl">
+            <span className="text-xs font-bold uppercase tracking-widest text-cyan-400">
+              Contact Us
+            </span>
+            <h1 className="mt-3 text-4xl font-extrabold tracking-tight sm:text-5xl">
+              Let&apos;s Plan Your Mentawai Surf Trip
+            </h1>
+            <p className="mt-4 text-base leading-relaxed text-slate-300">
+              Have questions about swell seasons, Siberut ferry schedules, or
+              2026/2027 dates? Send an inquiry below or chat with us directly on
+              WhatsApp.
+            </p>
+          </div>
         </div>
+      </section>
 
-        <div className="mt-12 grid gap-12 lg:grid-cols-2">
-          {/* Info Kontak */}
-          <div className="space-y-6">
-            <div className="flex items-start gap-4">
-              <div className="rounded-lg bg-blue-50 p-3 text-blue-600">
-                <MapPin size={22} />
-              </div>
-              <div>
-                <h2 className="font-semibold text-slate-900">Alamat Kantor</h2>
-                <p className="mt-1 text-sm text-slate-600">
-                  Jl. Contoh Bisnis No. 10, Indonesia
-                </p>
-              </div>
-            </div>
+      {/* Contact Content */}
+      <section className="py-20">
+        <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-5 lg:px-8">
+          {/* Left Info Panel */}
+          <div className="rounded-3xl bg-slate-950 p-8 text-white shadow-xl lg:col-span-2 sm:p-10">
+            <h2 className="text-2xl font-bold">Direct Channels</h2>
+            <p className="mt-2 text-sm text-slate-400">
+              Fast, personal replies directly from our Mentawai Surf Journey team.
+            </p>
 
-            <div className="flex items-start gap-4">
-              <div className="rounded-lg bg-blue-50 p-3 text-blue-600">
-                <Mail size={22} />
+            <div className="mt-8 space-y-6">
+              <div className="flex items-start gap-4">
+                <div className="rounded-2xl bg-cyan-500/15 p-3 text-cyan-400">
+                  <MessageCircle size={22} />
+                </div>
+                <div>
+                  <h3 className="text-sm font-semibold text-white">
+                    WhatsApp Booking
+                  </h3>
+                  <a
+                    href="https://wa.me/6282315509025"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-1 block text-sm text-cyan-400 hover:underline"
+                  >
+                    +62 823-1550-9025
+                  </a>
+                </div>
               </div>
-              <div>
-                <h2 className="font-semibold text-slate-900">Email</h2>
-                <p className="mt-1 text-sm text-slate-600">info@perusahaananda.com</p>
-              </div>
-            </div>
 
-            <div className="flex items-start gap-4">
-              <div className="rounded-lg bg-blue-50 p-3 text-blue-600">
-                <Phone size={22} />
+              <div className="flex items-start gap-4">
+                <div className="rounded-2xl bg-cyan-500/15 p-3 text-cyan-400">
+                  <Instagram size={22} />
+                </div>
+                <div>
+                  <h3 className="text-sm font-semibold text-white">Instagram</h3>
+                  <a
+                    href="https://instagram.com/mentawaisurfjourney"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-1 block text-sm text-slate-300 hover:text-cyan-400"
+                  >
+                    @mentawaisurfjourney
+                  </a>
+                </div>
               </div>
-              <div>
-                <h2 className="font-semibold text-slate-900">Telepon / WhatsApp</h2>
-                <p className="mt-1 text-sm text-slate-600">+62 812-3456-7890</p>
+
+              <div className="flex items-start gap-4">
+                <div className="rounded-2xl bg-cyan-500/15 p-3 text-cyan-400">
+                  <MapPin size={22} />
+                </div>
+                <div>
+                  <h3 className="text-sm font-semibold text-white">Location</h3>
+                  <p className="mt-1 text-sm text-slate-300">
+                    Mentawai Islands, West Sumatra, Indonesia
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="rounded-2xl bg-cyan-500/15 p-3 text-cyan-400">
+                  <Clock size={22} />
+                </div>
+                <div>
+                  <h3 className="text-sm font-semibold text-white">
+                    Response Time
+                  </h3>
+                  <p className="mt-1 text-sm text-slate-300">
+                    Daily • Typically replies within a few hours (WIB / GMT+7)
+                  </p>
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Form Kontak */}
-          <div className="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
+          {/* Right Form Panel */}
+          <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm lg:col-span-3 sm:p-10">
+            <h2 className="text-2xl font-bold text-slate-900">
+              Send a Trip Inquiry
+            </h2>
+            <p className="mt-2 text-sm text-slate-600">
+              Fill out your trip details below—clicking send will format your
+              inquiry straight into WhatsApp.
+            </p>
+
             {submitted && (
-              <div className="mb-6 flex items-center gap-3 rounded-lg bg-emerald-50 p-4 text-sm text-emerald-700">
-                <CheckCircle2 size={20} />
-                <span>Pesan Anda berhasil terkirim. Tim kami akan segera menghubungi Anda.</span>
+              <div className="mt-6 flex items-center gap-3 rounded-2xl border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-800">
+                <CheckCircle2 size={20} className="shrink-0 text-emerald-600" />
+                <span>
+                  WhatsApp chat opened! If it didn&apos;t launch automatically,
+                  message us directly at +62 823-1550-9025.
+                </span>
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className="space-y-5">
+            <form onSubmit={handleSubmit} className="mt-8 space-y-6">
+              <div className="grid gap-6 sm:grid-cols-2">
+                <div>
+                  <label className="block text-sm font-semibold text-slate-700">
+                    Full Name
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    required
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="Your full name"
+                    className="mt-2 w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-cyan-500 focus:bg-white focus:ring-4 focus:ring-cyan-500/15"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-semibold text-slate-700">
+                    Number of Surfers
+                  </label>
+                  <input
+                    type="number"
+                    name="surfers"
+                    min="1"
+                    max="20"
+                    required
+                    value={formData.surfers}
+                    onChange={handleChange}
+                    className="mt-2 w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-cyan-500 focus:bg-white focus:ring-4 focus:ring-cyan-500/15"
+                  />
+                </div>
+              </div>
+
               <div>
-                <label className="block text-sm font-medium text-slate-700">
-                  Nama Lengkap
+                <label className="block text-sm font-semibold text-slate-700">
+                  Preferred Travel Dates
                 </label>
                 <input
                   type="text"
-                  name="name"
-                  required
-                  value={formData.name}
+                  name="dates"
+                  value={formData.dates}
                   onChange={handleChange}
-                  placeholder="Masukkan nama Anda"
-                  className="mt-1.5 w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
+                  placeholder="e.g. June 10–20, 2026 or Flexible"
+                  className="mt-2 w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-cyan-500 focus:bg-white focus:ring-4 focus:ring-cyan-500/15"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-slate-700">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  required
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="nama@email.com"
-                  className="mt-1.5 w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-slate-700">
-                  Pesan
+                <label className="block text-sm font-semibold text-slate-700">
+                  Trip Notes / Questions
                 </label>
                 <textarea
                   name="message"
@@ -122,21 +232,22 @@ export default function Contact() {
                   required
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder="Ceritakan kebutuhan proyek atau pertanyaan Anda..."
-                  className="mt-1.5 w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
+                  placeholder="Tell us about your surf level, desired trip length, or any questions..."
+                  className="mt-2 w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-cyan-500 focus:bg-white focus:ring-4 focus:ring-cyan-500/15"
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full rounded-lg bg-blue-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-blue-700"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-cyan-500 px-6 py-3.5 text-sm font-bold text-slate-950 shadow-lg shadow-cyan-500/20 transition hover:bg-cyan-400"
               >
-                Kirim Pesan
+                <Send size={17} />
+                Send Inquiry via WhatsApp
               </button>
             </form>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 }
