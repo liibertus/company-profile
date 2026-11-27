@@ -89,6 +89,11 @@ export default function Footer() {
                   Contact Us
                 </Link>
               </li>
+              <li>
+                <Link to="/faq" className="text-slate-400 transition hover:text-cyan-400">
+                  FAQ
+                </Link>
+              </li>
             </ul>
           </div>
 
